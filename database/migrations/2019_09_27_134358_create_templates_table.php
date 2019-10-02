@@ -14,11 +14,12 @@ class CreateTemplatesTable extends Migration
     public function up()
     {
         Schema::create('templates', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title')->comment('テンプレートタイトル');
-            $table->mediumText('body')->comment('テンプレート本文');
-            $table->softDeletes();
-            $table->timestamps();
+            $table->bigIncrements('id')->comment('Autoincrement Id.');
+            $table->string('title')->comment('Template title.');
+            $table->mediumText('body')->comment('Template body text.');
+            $table->dateTime('deleted_at')->comment('Deleted date.');
+            $table->dateTime('updated_at')->comment('Updated date.');
+            $table->dateTime('created_at')->comment('Created date.');
         });
     }
 

@@ -14,13 +14,14 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title')->comment('ページタイトル');
-            $table->mediumText('body')->comment('ページ本文');
-            $table->unsignedInteger('user_id');
-            $table->tinyInteger('status')->comment('状態:0(WIO),1(Shipit)');
-            $table->softDeletes();
-            $table->timestamps();
+            $table->bigIncrements('id')->comment('Autoincrement Id.');
+            $table->string('title')->comment('Page Title.');
+            $table->mediumText('body')->comment('Page Body Text.');
+            $table->unsignedInteger('user_id')->comment('User Id.');
+            $table->tinyInteger('is_draft')->comment('Draft flag ');
+            $table->dateTime('deleted_at')->comment('Deleted date.');
+            $table->dateTime('updated_at')->comment('Updated date.');
+            $table->dateTime('created_at')->comment('Created date.');
         });
     }
 

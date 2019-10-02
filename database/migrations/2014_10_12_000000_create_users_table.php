@@ -14,15 +14,16 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->comment('ユーザ名');
-            $table->string('email')->comment('Email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->comment('パスワード');
-            $table->tinyInteger('permision')->comment('権限:0(通常),1(管理者)');
-            $table->rememberToken();
-            $table->softDeletes();
-            $table->timestamps();
+            $table->bigIncrements('id')->comment('Autoincrement Id.');
+            $table->string('name')->comment('user name');
+            $table->string('email')->comment('Email')->unique()->comment('Email address');
+            $table->timestamp('email_verified_at')->nullable()->comment('Email verify date');
+            $table->string('password')->comment('user password');
+            $table->tinyInteger('permision')->comment('0:member / 1:administrator');
+            $table->rememberToken()->comment('remember me token');
+            $table->dateTime('deleted_at')->comment('Deleted date.');
+            $table->dateTime('updated_at')->comment('Updated date.');
+            $table->dateTime('created_at')->comment('Created date.');
         });
     }
 
