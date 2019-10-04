@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->comment('user password');
             $table->tinyInteger('permission')->comment('0:member / 1:administrator')->default(0);
             $table->rememberToken()->comment('remember me token');
-            $table->dateTime('deleted_at')->comment('Deleted date.');
+            $table->dateTime('deleted_at')->comment('Deleted date.')->nullable();
             $table->dateTime('updated_at')->comment('Updated date.');
             $table->dateTime('created_at')->comment('Created date.');
         });

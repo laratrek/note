@@ -20,7 +20,7 @@ class CreatePagesTable extends Migration
             $table->mediumText('body')->comment('Page Body Text.');
             $table->unsignedInteger('user_id')->comment('User Id.');
             $table->tinyInteger('is_draft')->comment('Draft flag ');
-            $table->dateTime('deleted_at')->comment('Deleted date.');
+            $table->dateTime('deleted_at')->comment('Deleted date.')->nullable();
             $table->dateTime('updated_at')->comment('Updated date.');
             $table->dateTime('created_at')->comment('Created date.');
         });
