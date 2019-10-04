@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Page;
 
 class PageController extends Controller
@@ -14,7 +15,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        // Get My Page List.
+        $pages = Page::where('user_id', Auth::id())->get();
+        return view('page.index', ['pages' => $pages]);
     }
 
     /**
