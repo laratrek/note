@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->comment('Email')->unique()->comment('Email address');
             $table->timestamp('email_verified_at')->nullable()->comment('Email verify date');
             $table->string('password')->comment('user password');
-            $table->tinyInteger('permision')->comment('0:member / 1:administrator');
+            $table->tinyInteger('permission')->comment('0:member / 1:administrator')->default(0);
             $table->rememberToken()->comment('remember me token');
             $table->dateTime('deleted_at')->comment('Deleted date.');
             $table->dateTime('updated_at')->comment('Updated date.');
