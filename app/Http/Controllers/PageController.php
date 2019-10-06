@@ -50,6 +50,7 @@ class PageController extends Controller
     public function show(Page $page)
     {
         //
+        return view('page.show', ['page' => $page]);
     }
 
     /**
