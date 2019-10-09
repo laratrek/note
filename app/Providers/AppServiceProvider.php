@@ -15,12 +15,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Add Telescope only local development
-        // if ($this->app->isLocal()) {
-        //     $this->app->register(TelescopeServiceProvider::class);
-        // } else {
-        //     Telescope::ignoreMigrations();
-        // }
+        // Enable Telescope only local development
+        if ($this->app->isLocal()) {
+            $this->app->register(TelescopeServiceProvider::class);
+        } else {
+            Telescope::ignoreMigrations();
+        }
     }
 
     /**
