@@ -62,6 +62,7 @@ class PageController extends Controller
     public function edit(Page $page)
     {
         //
+        return view('page.edit', ['page' => $page]);
     }
 
     /**
@@ -74,6 +75,8 @@ class PageController extends Controller
     public function update(Request $request, Page $page)
     {
         //
+        $page->fill($request->input())->save();
+        return redirect()->route('pages.show', ['page' => $page]);
     }
 
     /**
