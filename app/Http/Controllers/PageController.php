@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PagePost;
 use App\Page;
 
 class PageController extends Controller
@@ -28,6 +29,7 @@ class PageController extends Controller
     public function create()
     {
         //
+        return view('page.create');
     }
 
     /**
