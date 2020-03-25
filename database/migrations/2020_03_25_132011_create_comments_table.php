@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,15 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('Autoincrement Id.');
-            $table->string('title')->comment('Page Title.');
-            $table->mediumText('body')->comment('Page Body Text.');
+            $table->unsignedBigInteger('page_id')->comment('Page relation Id.');
             $table->unsignedBigInteger('user_id')->comment('User Id.');
-            $table->tinyInteger('is_draft')->comment('Draft flag ');
+            $table->mediumText('body')->comment('Comment Text Body Text.');
             $table->dateTime('deleted_at')->comment('Deleted date.')->nullable();
             $table->dateTime('updated_at')->comment('Updated date.');
             $table->dateTime('created_at')->comment('Created date.');
+            $table->foreign('page_id')->references('id')->on('pages');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -34,6 +34,6 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('comments');
     }
 }
