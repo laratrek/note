@@ -10,5 +10,10 @@
             {{$page->body}}
         </div>
     </div>
+    <form action="{{ route('pages.destroy', ['page' => $page]) }}" method='POST'>
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
 </div>
 @endsection
