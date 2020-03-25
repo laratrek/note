@@ -40,7 +40,11 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $page = new Page();
+        $page->fill($request->input());
+        $page->user_id = Auth::id();
+        $page->save();
+        return redirect()->route('pages.show', ['page' => $page]);
     }
 
     /**
@@ -51,7 +55,6 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
         return view('page.show', ['page' => $page]);
     }
 
@@ -74,7 +77,7 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(PagePost $request, Page $page)
     {
         //
         $page->fill($request->input())->save();
